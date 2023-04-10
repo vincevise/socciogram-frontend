@@ -9,6 +9,7 @@ import { useDebounce } from '../hooks/useDebounce'
 import { fetchSearchUsers, selectSearchUsers } from '../features/searchSlice'
 import UserCard from './UserCard'
 import UserCard1 from './UserCard1'
+import { Oval } from 'react-loader-spinner'
  
 
 const Navbar = () => {
@@ -84,7 +85,7 @@ const Navbar = () => {
 
   return (
     <>
-        {profileDropdown && <div className='w-48 h-fit fixed bg-white top-[70px] right-[10px] rounded-md drop-shadow-lg p-2 text-slate-800 z-20' ref={profileDropDownRef}>
+        {profileDropdown && <div className='w-48 h-fit fixed bg-white top-[70px] right-[10px] rounded-md drop-shadow-lg p-2 text-slate-800 z-20 font-roboto' ref={profileDropDownRef}>
             <div className='flex gap-2'>
                 <div className='w-12 h-12 bg-slate-200 rounded-full shrink-0 flex items-center justify-center font-semibold text-2xl overflow-hidden'>
                     { currentUserState.avatar.url==='' ?  
@@ -106,9 +107,12 @@ const Navbar = () => {
             >Sign Out</button>
         </div>}
 
-        {openSearchModal && <div className='w-96 min-h-48 fixed bg-white top-[70px] left-[10px] drop-shadow-md rounded-md z-30 p-2 overflow-y-scroll scrollable-div' ref={searchModalRef}>
+        {openSearchModal && <div className='w-96 min-h-48 h-48 max-h-fit fixed bg-white top-[70px] left-[10px] drop-shadow-md rounded-md z-30 p-2 overflow-y-scroll scrollable-div' ref={searchModalRef}>
                 {searchState.loading 
-                    ? 'Loading...' 
+                    ? 
+                    <div className='w-full h-full flex items-center justify-center'>
+                        <Oval/>
+                    </div>
                     : 
                     <>
                         {searchState.users.map((x)=>{

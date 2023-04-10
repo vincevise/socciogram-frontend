@@ -3,26 +3,14 @@ import { selectPosts } from '../features/postsSlice'
 import { useSelector } from 'react-redux'
 import { Oval } from 'react-loader-spinner'
 import PostCard1 from './PostCard1'
+import Loader from './Loader'
 
 const Posts = () => {
 
     const postState = useSelector(selectPosts)
     if(postState.loading){
         return (
-            <div className="w-screen h-screen flex items-center justify-center">
-              <Oval
-                height={80}
-                width={80}
-                color="gray"
-                wrapperStyle={{}}
-                wrapperClass=""
-                visible={true}
-                ariaLabel="oval-loading"
-                secondaryColor="white"
-                strokeWidth={2}
-                strokeWidthSecondary={2}
-              />
-            </div>
+            <Loader/>
         )
     }
 

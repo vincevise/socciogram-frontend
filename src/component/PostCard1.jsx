@@ -54,7 +54,7 @@ const PostCard1 = ({ data }) => {
     }
   return (
     <div
-      className="w-full lg:w-[450px] my-2 mb-4 p-4 pb-1 rounded-lg bg-white mx-auto"
+      className="w-full lg:w-[450px] my-2 mb-4 p-4 pb-1 rounded-lg bg-white mx-auto font-roboto"
       key={data._id}
     >
       <Link
@@ -80,20 +80,21 @@ const PostCard1 = ({ data }) => {
         </span>
         <span className="text-slate-600">@{data.user.username}</span>
       </Link>
-      <p className="text-left text-slate-600 my-3 text-lg font-thin">
-        {data.description}
-      </p>
+      
       {
         data.postImage && (
-          <div className=" mb-2">
+          <div className="mt-4 mb-2">
             <img
               src={data.postImage.url}
               alt="post-image"
-              className="w-full h-full object-fit"
+              className="w-full h-full object-fit rounded-md"
             />
           </div>
         ) 
       }
+      <p className="text-left text-slate-800 my-3 text-lg font-thin">
+        {data.description}
+      </p>
       <div className="flex gap-10 items-center [&>span]:cursor-pointer">
         <span className="flex items-center gap-2">
           {data.likes.some((z) => z._id === currentUserState._id) ? (

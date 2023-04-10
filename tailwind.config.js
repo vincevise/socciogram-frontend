@@ -10,7 +10,8 @@ module.exports = {
   theme: {
     extend:{
       fontFamily:{ 
-        handrawn: ["'Delicious Handrawn', cursive", ...defaultTheme.fontFamily.sans]
+        handrawn: ["'Delicious Handrawn', cursive", ...defaultTheme.fontFamily.sans],
+        roboto:["'Roboto', sans-serif", ...defaultTheme.fontFamily.sans]
       }, 
       colors:{
         'comp-theme':'#fbc56f',
