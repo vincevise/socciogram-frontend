@@ -90,7 +90,7 @@ const UserDetails = () => {
  
   return (
     <>
-        <div className="w-7/12 mx-auto ">
+        <div className="w-10/12 sm:w-7/12 mx-auto ">
             <div className="w-full	 mt-[10px] bg-white p-4 flex flex-col items-center justify-center rounded-md">
             <div className="w-36 h-36 bg-slate-600  rounded-full uppercase text-7xl text-white flex items-center justify-center overflow-hidden">
                 {oneUserState.user.avatar &&

@@ -13,7 +13,7 @@ const Home = () => {
 
   
   return (
-    < div className=' w-full sm:w-8/12 lg:w-fit flex relative px-10 sm:mx-auto ' >
+    < div className=' w-11/12 sm:w-8/12 lg:w-fit flex relative mx-auto mb-10' >
         <Posts/>
         <SuggestedUsers key={'asd'}/>
     </div>

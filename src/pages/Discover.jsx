@@ -12,9 +12,9 @@ const Discover = () => {
     dispatch(fetchPosts('discover'))
   },[])
   return (
-    <div className=' w-full sm:w-8/12 lg:w-fit flex relative px-10 sm:mx-auto '>
-      <Posts/>
-      <SuggestedUsers key={'34d'}/>
+    < div className=' w-11/12 sm:w-8/12 lg:w-fit flex relative mx-auto mb-10' >
+        <Posts/>
+        <SuggestedUsers key={'asd'}/>
     </div>
   )
 }
