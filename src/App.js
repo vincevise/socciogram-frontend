@@ -15,6 +15,8 @@ import UserDetails from './pages/UserDetails'
 import Discover from './pages/Discover'
 import { selectUserDetails, userAuth } from './features/currentUserSlice'
 import Explore from './pages/Explore'
+import { Oval } from 'react-loader-spinner'
+import Loading from './pages/Loading'
 
  
 export const PostContext = createContext()
@@ -35,7 +37,7 @@ function App() {
   },[currentUser.username])
  
 
-  // console.log(currentUser)
+  console.log(currentUser)
  
   
   return ( 
@@ -46,15 +48,21 @@ function App() {
         <Route path='/' element={
           <> 
             {
-              currentUser.authenticated ? 
+              currentUser.loading ? 
+              <Loading/> : 
               <>
-                <Navbar/>
-                <Sidebar/>
-                <Home/>
-                <BottomBar/>
-              </> 
-              :  
-              <Login/>
+                {
+                  currentUser.authenticated ? 
+                  <>
+                    <Navbar/>
+                    <Sidebar/>
+                    <Home/>
+                    <BottomBar/>
+                  </> 
+                  :  
+                  <Login/>
+                }
+              </>
             }
           </>
         }/>
@@ -108,6 +116,7 @@ function App() {
             <BottomBar/>
           </>
         }/>
+        <Route path='/loading' element={<Loading/>}/>
           
       </Routes>
     </BrowserRouter>  

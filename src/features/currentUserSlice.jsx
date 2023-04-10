@@ -70,7 +70,8 @@ const initialState = {
     followers:'',
     avatar:{},
     _id:'',
-    authenticated:false
+    authenticated:false,
+    loading:true
 } 
 
 const currentUserSlice = createSlice({
@@ -88,6 +89,7 @@ const currentUserSlice = createSlice({
             state.avatar = avatar
             state._id = _id
             state.authenticated = true
+            state.loading = false
         },
         userlogout(state,action){
             state.firstname = ''
@@ -101,10 +103,12 @@ const currentUserSlice = createSlice({
                 url:''
             }
             state.authenticated = false
+            state.loading = false
         }
     },
     extraReducers(builder){
-        builder.addCase(createUser.fulfilled,(state,action)=>{
+        builder
+        .addCase(createUser.fulfilled,(state,action)=>{
             const {username, email, lastname, firstname, _id} = action.payload.data 
             const {token} = action.payload 
 
@@ -116,6 +120,10 @@ const currentUserSlice = createSlice({
             state.username = username
             state.email = email 
             state.authenticated = true
+            state.loading = false
+        })
+        .addCase(createUser.pending,(state, action)=>{
+            state.loading = true
         })
         .addCase(loginUserThunk.fulfilled, (state,action)=>{ 
             const {isUser, token} = action.payload
@@ -128,7 +136,10 @@ const currentUserSlice = createSlice({
             state.avatar = isUser.avatar  
             state._id = isUser._id
             state.authenticated = true
-            
+            state.loading = false
+        })
+        .addCase(loginUserThunk.pending, (state, action)=>{
+            state.loading = true
         }) 
         .addCase(addfollowerThunk.fulfilled, (state,action)=>{
             

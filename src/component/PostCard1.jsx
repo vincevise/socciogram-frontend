@@ -48,8 +48,10 @@ const PostCard1 = ({ data }) => {
   };
 
   const postState = useSelector(selectPosts)
+    if(data.likes.length > 0){
 
-   
+      console.log(data.likes[0].username)
+    }
   return (
     <div
       className="w-full lg:w-[450px] my-2 mb-4 p-4 pb-1 rounded-lg bg-white mx-auto"
@@ -90,8 +92,7 @@ const PostCard1 = ({ data }) => {
               className="w-full h-full object-fit"
             />
           </div>
-        )
-        // <img src={data.postImage.url}  width="430" height="768" alt="post-image" className="postcard-image mb-2"/>
+        ) 
       }
       <div className="flex gap-10 items-center [&>span]:cursor-pointer">
         <span className="flex items-center gap-2">
@@ -128,6 +129,9 @@ const PostCard1 = ({ data }) => {
           </span>
         </span>
       </div>
+      { data.likes.length > 0 && 
+        <p className="text-left   m-2 text-gray-500 font-thin">Liked by {data.likes[0].username} {((data.likes.length - 1) > 1) ? `and ${data.likes.length - 1} others` : `and one other`}   </p>
+      }
       {openCommentSection && (
         <>
             <div

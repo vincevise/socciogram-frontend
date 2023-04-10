@@ -12,7 +12,7 @@ const Sidebar = () => {
   const location = useLocation().pathname 
 
   return (
-    <div className='hidden fixed lg:w-[192px] sm:block w-fit bg-white p-2 m-[10px] flex flex-col rounded-md' style={{height:'calc(100vh - 80px)'}}>
+    <div className='hidden fixed lg:w-[192px] sm:block w-fit bg-white p-2 m-[10px] flex flex-col rounded-md z-20' style={{height:'calc(100vh - 80px)'}}>
         <CustomToolTip title={'Home'} pos='left'>
           <Link to={'/'} className={`w-fit lg:w-full p-[10px] ${location === '/' ? 'bg-slate-200' : 'bg-white'} hover:bg-slate-300 rounded-md cursor-pointer stroke-1 flex items-center gap-2 text-md font-semibold  mb-1`}> 
             {location === '/' ? 

@@ -25,7 +25,6 @@ const Navbar = () => {
     const currentUserState = useSelector(selectUserDetails)
 
     const searchState = useSelector(selectSearchUsers)
-    console.log(searchState)
 
     const profileDropDownRef = useRef(null)
     const searchModalRef = useRef(null)
@@ -52,17 +51,13 @@ const Navbar = () => {
             if (profileDropDownRef.current && !profileDropDownRef.current.contains(event.target)) { 
                 if(profileDropdown){
                     setProfiledropdown(false)
-                }
-                 
-                console.log('click')
+                } 
             } 
             if (searchModalRef.current && !searchModalRef.current.contains(event.target)) { 
                 if(searchModalRef){
                     setSearchModal(false)
                     
-                }
-                 
-                console.log('click')
+                } 
             }
           }
       
