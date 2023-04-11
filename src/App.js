@@ -52,7 +52,7 @@ function App() {
               <Loading/> : 
               <>
                 {
-                  currentUser.authenticated ? 
+                  currentUser.authenticated  ? 
                   <>
                     <Navbar/>
                     <Sidebar/>

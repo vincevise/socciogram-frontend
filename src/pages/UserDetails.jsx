@@ -18,6 +18,7 @@ import {
 import PostCard from "../component/PostCard";
 import { fetchPostUsers, selectPosts } from "../features/postsSlice";
 import Posts from "../component/Posts";
+import Loader from "../component/Loader";
 
 const UserDetails = () => {
   const dispatch = useDispatch();
@@ -71,20 +72,7 @@ const UserDetails = () => {
 
   if (oneUserState.loading  ) {
     return (
-      <div className="w-screen h-screen flex items-center justify-center">
-        <Oval
-          height={80}
-          width={80}
-          color="gray"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-          ariaLabel="oval-loading"
-          secondaryColor="white"
-          strokeWidth={2}
-          strokeWidthSecondary={2}
-        />
-      </div>
+      <Loader/>
     );
   }
  
