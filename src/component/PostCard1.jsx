@@ -130,9 +130,11 @@ const PostCard1 = ({ data }) => {
           </span>
         </span>
       </div>
-      { data.likes.length > 0 && 
-        <p className="text-left   m-2 text-gray-500 font-thin">Liked by {data.likes[0].username} {((data.likes.length - 1) > 1) ? `and ${data.likes.length - 1} others` : `and one other`}   </p>
-      }
+      <div>
+        { data.likes.length > 0 && 
+          <p className="text-left   m-2 text-gray-500 font-thin">Liked by {data.likes[0].username} {((data.likes.length - 1) > 1) ? `and ${data.likes.length - 1} others` : `and one other`}   </p>
+        }
+      </div>
       {openCommentSection && (
         <>
             <div
