@@ -17,6 +17,7 @@ import { selectUserDetails, userAuth } from './features/currentUserSlice'
 import Explore from './pages/Explore'
 import { Oval } from 'react-loader-spinner'
 import Loading from './pages/Loading'
+ 
 
  
 export const PostContext = createContext()
@@ -41,6 +42,7 @@ function App() {
  
   
   return ( 
+    <> 
     <PostContext.Provider value={{createPostModal, setCreatePostModal}}>
     <div className='bg-slate-100 w-screen min-h-screen  	'>
     <BrowserRouter>
@@ -75,7 +77,7 @@ function App() {
           </>
         }/>
          <Route path='/discover' element={
-          <> 
+           <> 
             <Navbar/>
             <Sidebar/>
             <Discover/>
@@ -127,6 +129,7 @@ function App() {
     }
     
     </PostContext.Provider>
+    </>
   )
 }
 

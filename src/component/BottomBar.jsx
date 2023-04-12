@@ -31,7 +31,13 @@ const BottomBar = () => {
             <GrAddCircle size={25} strokeWidth={3}/>  
           </button>   
           <Link to={`/profile/${currentUserState.username}`} className={`w-fit   p-1 ${location === '/discover' ? 'bg-slate-200' : 'bg-white'} hover:bg-slate-300 rounded-md cursor-pointer stroke-1 flex items-center gap-2 text-md font-semibold  `}>
-            <div className='w-[25px] h-[25px] bg-slate-600 rounded-full'></div>  
+            <div className='w-[25px] h-[25px] bg-slate-600 rounded-full'>
+            { currentUserState.avatar.url==='' ?  
+                        currentUserState.firstname[0]
+                        :
+                        <img src={currentUserState.avatar.url} alt="profile" className='w-full h-full object-cover' />
+            }
+            </div>  
           </Link> 
     </div>
   )

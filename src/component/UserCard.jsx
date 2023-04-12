@@ -37,7 +37,7 @@ const UserCard = ({data}) => {
                     </Link>
                     <div className='flex items-center'>
                         {
-                            currentUser.following.includes(data._id) ? 
+                            currentUser.user?.following?.includes(data._id) ? 
                             <button className='px-2 py-1 bg-slate-300 text-black rounded-md font-semibold text-xs  ' onClick={()=>removeFollowing(data._id)}>Unfollow</button> 
                             :
                             <button className='px-2 py-1 bg-blue-500 text-white rounded-md font-semibold text-xs ' onClick={()=>handleFollow(data._id)}>Follow</button> 

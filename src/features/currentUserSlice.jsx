@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { axiosInstance, loginUser, postNewUser } from "../api/api"
 import { useSelector } from "react-redux"
-
+ 
 export const createUser = createAsyncThunk('user/registerUser',async(data)=>{
     const response = await postNewUser(data) 
     return response
@@ -71,7 +71,8 @@ const initialState = {
     avatar:{},
     _id:'',
     authenticated:false,
-    loading:true
+    loading:true,
+    error:''
 } 
 
 const currentUserSlice = createSlice({
@@ -140,6 +141,11 @@ const currentUserSlice = createSlice({
         })
         .addCase(loginUserThunk.pending, (state, action)=>{
             state.loading = true
+        }) 
+        .addCase(loginUserThunk.rejected, (state, action)=>{
+            console.log(action)
+            state.error = action.error.message
+            state.loading = false
         }) 
         .addCase(addfollowerThunk.fulfilled, (state,action)=>{
             

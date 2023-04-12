@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUserThunk, selectUserDetails } from '../features/currentUserSlice';
  
 
-
 const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [showPassword, setShowpassword] = useState(true)
+    const [error, setError] = useState('')
     const currentUser = useSelector(selectUserDetails) 
 
     const handlePassword = () => {
@@ -21,7 +21,7 @@ const Login = () => {
 
   return (
     <>
-    <div  className='w-full min-h-screen bg-slate-200 flex items-center justify-center'>
+    <div  className='w-full min-h-screen bg-slate-200 flex items-center justify-center'> 
         <div className='bg-white w-96 p-2 rounded-md'> 
             <Formik
             initialValues={{ email: '', password: '' }}
@@ -38,8 +38,14 @@ const Login = () => {
             }}
             onSubmit={async(values, { setSubmitting }) => {
                 setTimeout(async() => { 
-                    dispatch(loginUserThunk(values))
-                    navigate('/home')
+                    const response = await dispatch(loginUserThunk(values))
+                    if(response.type === 'user/loginUser/fulfilled'){
+                        navigate('/home')
+                    }
+                    if(response.type === 'user/loginUser/rejected'){
+                        // console.log(response.error.message)
+                        setError('Invalid credentials')
+                    }
                     setSubmitting(false);
                 }, 400);
             }}
@@ -51,6 +57,7 @@ const Login = () => {
                     gap-2 
                     p-4  '
                 >
+                <span className='text-red-500'>{error}</span>
                 <label htmlFor="email-input" className='text-left'>
                     Email
                 </label>
