@@ -152,7 +152,7 @@ const UserDetails = () => {
             </div>
             </div>
             {postsState.posts.length > 0 && (
-            <div className="w-full mt-2 mb-10 rounded-lg mx-auto">
+            <div className="w-full mt-2 mb-10 pb-10 rounded-lg mx-auto">
                 <Posts/>
             </div>
             )}
