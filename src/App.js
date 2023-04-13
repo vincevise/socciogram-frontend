@@ -13,7 +13,7 @@ import Home from './pages/Home'
 import { fetchUsers, selectAllUsers } from './features/usersAllSlice'
 import UserDetails from './pages/UserDetails'
 import Discover from './pages/Discover'
-import { selectUserDetails, userAuth } from './features/currentUserSlice'
+import { selectUserDetails, userAuth, userlogout } from './features/currentUserSlice'
 import Explore from './pages/Explore'
 import { Oval } from 'react-loader-spinner'
 import Loading from './pages/Loading'
@@ -31,7 +31,9 @@ function App() {
  
   useLayoutEffect(()=>{
     if(localStorage.getItem('token')){
-      const response = loginJWT().then((res)=>{dispatch(userAuth(res.data)) })
+      const response = loginJWT()
+      .then((res)=>{dispatch(userAuth(res.data)) })
+      .catch((error)=>dispatch(userlogout()))
       dispatch(fetchUsers())
     }
 
