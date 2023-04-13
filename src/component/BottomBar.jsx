@@ -35,7 +35,7 @@ const BottomBar = () => {
      
     // console.log(location)
   return (
-    <div className='sm:hidden max-w-screen w-full fixed bottom-0 h-fit bg-white flex justify-evenly items-center content-center p-1 gap-1 z-20'> 
+    <div className='sm:hidden max-w-screen w-full fixed bottom-0 h-fit bg-white flex justify-evenly items-center content-center p-1 gap-1 z-20 border-t border-slate-500'> 
          <Link to={'/home'} className={`w-fit   p-1 ${location === '/home' ? 'bg-slate-200' : 'bg-white'} hover:bg-slate-300 rounded-md cursor-pointer stroke-1 flex   items-center gap-2 text-md font-semibold `}> 
             {location === '/home' ? 
               <RiHomeFill size={25}/> :
