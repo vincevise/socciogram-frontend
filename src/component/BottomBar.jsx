@@ -1,17 +1,38 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AiFillCompass, AiOutlineCompass } from 'react-icons/ai'
 import { GrAddCircle } from 'react-icons/gr'
 import { RiHomeFill, RiHomeLine } from 'react-icons/ri'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { PostContext } from '../App'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectUserDetails } from '../features/currentUserSlice'
+import { fetchUsers } from '../features/usersAllSlice'
 
 const BottomBar = () => {
     const {createPostModal, setCreatePostModal} = useContext(PostContext)
     const location = useLocation().pathname
     const currentUserState = useSelector(selectUserDetails)
+    const dispatch = useDispatch() 
+    const navigate = useNavigate() 
 
+ 
+     // check if the user has logged in or not
+    useEffect(()=>{
+        if(!currentUserState.authenticated && !currentUserState.loading) navigate('/login')
+
+        if(currentUserState.error){
+            navigate('/login')
+        }
+    },[currentUserState])
+    
+    useEffect(()=>{ 
+        dispatch(fetchUsers())
+    },[navigate])
+
+     
+    
+
+     
     // console.log(location)
   return (
     <div className='sm:hidden max-w-screen w-full fixed bottom-0 h-fit bg-white flex justify-evenly items-center content-center p-1 gap-1 z-20'> 
