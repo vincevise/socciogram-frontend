@@ -33,9 +33,6 @@ const UserDetails = () => {
 
   const postsState = useSelector(selectPosts)
 
-  console.log(currentUserState, 'currentUser UserDetails')
-  console.log(oneUserState, 'oneUser UserDetails')
-
   const params = useParams(); 
 
   useEffect(() => {

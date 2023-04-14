@@ -74,13 +74,14 @@ const Navbar = () => {
     }
 
     // check if the user has logged in or not
+    console.log(currentUserState)
     useEffect(()=>{
         if(!currentUserState.authenticated && !currentUserState.loading) navigate('/login')
 
         if(currentUserState.error){
             navigate('/login')
         }
-    },[currentUserState])
+    },[currentUserState.authenticated])
 
     useEffect(()=>{
         setProfiledropdown(false)

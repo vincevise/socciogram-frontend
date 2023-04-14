@@ -35,12 +35,13 @@ function App() {
       .then((res)=>{dispatch(userAuth(res.data)) })
       .catch((error)=>dispatch(userlogout()))
       dispatch(fetchUsers())
+    }else{
+      dispatch(userlogout())
     }
 
   },[currentUser.username])
  
-
-  console.log(currentUser)
+ 
  
   
   return ( 

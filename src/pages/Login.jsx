@@ -15,6 +15,11 @@ const Login = () => {
     const handlePassword = () => {
       setShowpassword(!showPassword)
     }
+
+    const handleGuestCredentials = ()=>{
+        dispatch(loginUserThunk({email:'jarreddunn@gmail.com', password:'123456'}))
+    }
+
     useEffect(()=>{
         if(currentUser.authenticated) navigate('/home')
     },[currentUser])
@@ -86,7 +91,11 @@ const Login = () => {
                 <button type="submit" disabled={isSubmitting} className='bg-blue-500 text-white py-2 font-semibold rounded-md mt-2'>
                     Login
                 </button>
-                <p>Not a user ? <Link to={'/register'} className='text-blue-600'>Sign Up</Link></p>
+                
+                <button type="submit" disabled={isSubmitting} className='bg-white text-gray-800 border border-gray-800 py-2 font-semibold rounded-md mt-2 hover:bg-gray-100' onClick={handleGuestCredentials}>
+                    Use Guest Credentials
+                </button>
+                <p className='mt-6'>Not a user ? <Link to={'/register'} className='text-blue-600'>Sign Up</Link></p>
                 </Form>
             )}
             </Formik>

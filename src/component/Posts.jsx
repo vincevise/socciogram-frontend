@@ -14,8 +14,7 @@ const Posts = () => {
             <Loader/>
         )
     }
-
-    console.log(location.pathname)
+ 
      
   return (
     <div className=' z-10 mx-auto h-full'>
