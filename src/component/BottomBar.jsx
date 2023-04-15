@@ -47,7 +47,7 @@ const BottomBar = () => {
           <button className='w-fit   p-1 hover:bg-slate-300 rounded-md cursor-pointer flex items-center gap-2 font-semibold' onClick={()=>setCreatePostModal(!createPostModal)}>
             <GrAddCircle size={30} strokeWidth={3}/>  
           </button>   
-          <Link to={`/profile/${currentUserState.username}`} className={`w-fit   p-1 ${location === '/discover' ? 'bg-slate-200' : 'bg-white'} hover:bg-slate-300 rounded-md cursor-pointer stroke-1 flex items-center gap-2 text-md font-semibold  `}>
+          <Link to={`/profile/${currentUserState.username}`} className={`w-fit   p-1 ${location === '/profile' ? 'bg-slate-200' : 'bg-white'} hover:bg-slate-300 rounded-md cursor-pointer stroke-1 flex items-center gap-2 text-md font-semibold  `}>
             <div className='w-[30px] h-[30px] bg-slate-600 rounded-full'>
             { currentUserState.avatar.url==='' ?  
                         currentUserState.firstname[0]
