@@ -17,8 +17,9 @@ const UserCard1 = ({data}) => {
 
     const removeFollowing = (userIdToRemove) => {
         dispatch(removeFollowerThunk(userIdToRemove))
-    }
+    } 
  
+    console.log(data, currentUser.following)
 
   return (
     <div className='bg-white p-2 flex  justify-between items-center w-full'  >

@@ -18,7 +18,7 @@ const UserCard = ({data}) => {
     const removeFollowing = (userIdToRemove) => {
         dispatch(removeFollowerThunk(userIdToRemove))
     }
- 
+    console.log(data, currentUser.following.includes(data._id))
 
   return (
     <div className='bg-white p-2 flex  justify-between items-center w-full'  >
@@ -37,7 +37,7 @@ const UserCard = ({data}) => {
                     </Link>
                     <div className='flex items-center'>
                         {
-                            currentUser.user?.following?.includes(data._id) ? 
+                            currentUser?.following?.includes(data._id) ? 
                             <button className='px-2 py-1 bg-slate-300 text-black rounded-md font-semibold text-xs  ' onClick={()=>removeFollowing(data._id)}>Unfollow</button> 
                             :
                             <button className='px-2 py-1 bg-blue-500 text-white rounded-md font-semibold text-xs ' onClick={()=>handleFollow(data._id)}>Follow</button> 
